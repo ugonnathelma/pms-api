@@ -1,0 +1,172 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PMS Collection",
+		"_postman_id": "e9adbb7a-e358-6d9d-b027-670630ef3269",
+		"description": "Collection of Poplulaton Management Service Api Routes\n\nPOST '/locations' Create a new Location\n\nPOST '/locations/:id/sublocation' Create a location inside an existing location\n\nGET '/locations' Get all locations\n\nGET '/location/:id' Get a specific location\n\nPUT '/location/:id' Edit a specific location\n\nDELETE '/location/:id' Delete a specific location (also delete its sublocations)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create a location",
+			"request": {
+				"url": "localhost:3000/locations",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Lagos",
+							"description": "location name",
+							"type": "text"
+						},
+						{
+							"key": "maleCount",
+							"value": "10",
+							"description": "Number of male residents",
+							"type": "text"
+						},
+						{
+							"key": "femaleCount",
+							"value": "10",
+							"description": "Number of female residents",
+							"type": "text"
+						}
+					]
+				},
+				"description": "params: none\n\npayload: {\n\tname: String,\n\tmaleCount: Number,\n\tfemaleCount: Number\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a nested location",
+			"request": {
+				"url": "localhost:3000/locations/20/sublocations",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Lagos",
+							"description": "location name",
+							"type": "text"
+						},
+						{
+							"key": "maleCount",
+							"value": "10",
+							"description": "Number of male residents",
+							"type": "text"
+						},
+						{
+							"key": "femaleCount",
+							"value": "10",
+							"description": "Number of female residents",
+							"type": "text"
+						}
+					]
+				},
+				"description": "params: locationId\n\npayload: {\n\tname: String,\n\tmaleCount: Number,\n\tfemaleCount: Number\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all locations",
+			"request": {
+				"url": "localhost:3000/locations",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "get all locations in the db\n\nparams: none\n\npayload: none"
+			},
+			"response": []
+		},
+		{
+			"name": "Get specific location",
+			"request": {
+				"url": "localhost:3000/locations/4",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "params: locationId\n\npayload: none"
+			},
+			"response": []
+		},
+		{
+			"name": "Get locations and sublocations",
+			"request": {
+				"url": "localhost:3000/locations/20/sublocations",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "params: locationId\n\npayload: none"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a location",
+			"request": {
+				"url": "localhost:3000/locations/23",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Lagos",
+							"description": "location name",
+							"type": "text"
+						},
+						{
+							"key": "maleCount",
+							"value": "10",
+							"description": "Number of male residents",
+							"type": "text"
+						},
+						{
+							"key": "femaleCount",
+							"value": "10",
+							"description": "Number of female residents",
+							"type": "text"
+						}
+					]
+				},
+				"description": "params: locationId\n\npayload: {\n\tname: String,\n\tmaleCount: Number,\n\tfemaleCount: Number\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a location",
+			"request": {
+				"url": "localhost:3000/locations/3",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "params: locationId\n\npayload: none"
+			},
+			"response": []
+		}
+	]
+}
