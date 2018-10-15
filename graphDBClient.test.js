@@ -138,3 +138,31 @@ test("delete a location and its children", async done => {
   expect(sumTotal).toBe(0);
   done();
 });
+
+test("delete a non-existent location", async done => {
+  await dbMethods.deleteLocation(session, 123).then(result => {
+    expect(result.message).toEqual("location has been removed");
+  });
+  done();
+});
+
+test("edit a non-existent location", async done => {
+  await dbMethods.updateLocation(session, 45, "Mende", 20, 50).then(result => {
+    expect(result.message).toEqual("Location doesn't exist");
+  });
+  done();
+});
+
+test("edit a location with no input", async done => {
+  await dbMethods.updateLocation(session, location.id).catch(error => {
+    expect(error).toEqual("You must include a field to change");
+  });
+  done();
+});
+
+test("get a non-existent location", async done => {
+  await dbMethods.getLocation(session, "333").then(result => {
+    expect(result.message).toEqual("Location doesn't exist");
+  });
+  done();
+});
