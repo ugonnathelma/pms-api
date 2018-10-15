@@ -1,41 +1,38 @@
 # Population Managment System
+Population Management System allows users manage locations
 
-## Why I chose a graph databse
+### Features!
 
-The ability to put locations inside each other with an arbitrary amount of nesting creates
-some challenges for storing and retrieving data. 
+- Location can be created with the following fields:
+- - name
+- - maleCount
+- - femaleCount
+- Sub-locations can be created with the same fields above
+- Locations and Sub-locations can be updated
+- Locations and Sub-locations can be deleted
+- When a location is deleted, all sub-locations of that location is also deleted
 
-If we use a document data store we can store a nested location like this.
+### Tools and Modules Required
+* [NodeJs](https://nodejs.org/en) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+* [Neo4J](https://neo4j.com/docs/operations-manual/current/installation/) - graph database management system developed by Neo4j 
+* [Postman](https://www.getpostman.com/) - To test APi's
+* Terminal or Command Line
+* Text Editor or IDE
 
-```
-[{
-    1: {
-        name: 'Lagos',
-        maleCount: 20,
-        femaleCount: 20,
-        locations: [{
-            name: 'Yaba',
-            maleCount: 12,
-            femaleCount: 22,
-            locations: [{
-                name: 'Sabo',
-                maleCount: 2,
-                femaleCount: 9,
-                locations: []
-            }]
-        }]
-    }
-}]
-```
+### Endpoints
 
-As a result if we want to find 'Sabo' we need to first look inside 'Lagos' then 'Yaba'
-Querying quickly becomes inefficient and slow.
+| VERB | URL | ACTION |
+| ------ | ------ | ------ |
+| POST | /locations | Creates a new location |
+| POST | /locations/:id/sublocations | Creates a sub-location |
+| GET | /locations | Gets all locations |
+| GET | /locations/:id | Gets specific location |
+| GET | /locations/:id/sublocations | Gets specific location and all its sub-locations |
+| PUT | /locations/:id | Edits a location |
+| DELETE | /locations/:id | Deletes a location |
 
-Using a graph we can represent each location as a node and the connection between them as a relationship.
-This changes the retrieving of deeply nested locations from a recursive problem to a graph traversal.
-
-Please refer to `Cypher.md` for a brief intro to the the Cypher Query Language.
-
+### PostMan
+There's a postman collection `PMS Collection.postman_collection.json` with prepopulated requests for you to test the endpoints
 
 ## Setting Up
 
@@ -58,5 +55,8 @@ Test the application by runing `npm test`. This starts `jest` and runs the tests
 Start the app using `npm start`. You may make use of the included postman collection as a guide to querying the http API.
 
 
+License
+----
 
+MIT
 
