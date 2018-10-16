@@ -54,6 +54,9 @@ Test the application by runing `npm test`. This starts `jest` and runs the tests
 
 Start the app using `npm start`. You may make use of the included postman collection as a guide to querying the http API.
 
+## Apiary
+
+https://app.apiary.io/pms9
 
 License
 ----
